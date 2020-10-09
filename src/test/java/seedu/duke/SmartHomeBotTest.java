@@ -41,6 +41,7 @@ class SmartHomeBotTest {
         assertThrows(InvalidAdditionOfAppliance.class, () -> applianceList.addAppliance(l1));
 
     }
+
     @Test
     public void removeLocationTest() throws InvalidAddtionOfLocation, EmptyParameterException {
         // Create Sample Locations and empty appliance list
@@ -61,7 +62,7 @@ class SmartHomeBotTest {
         String outputString = outContent.toString().replace(System.getProperty("line.separator"), "");
 
         //compare outputs
-        assertEquals(Messages.MESSAGE_LOCATION_NOT_EXIST + " Nothing will be deleted.",outputString);
+        assertEquals(Messages.MESSAGE_LOCATION_NOT_EXIST + " Nothing will be deleted.", outputString);
 
     }
 }

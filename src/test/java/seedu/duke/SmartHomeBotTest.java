@@ -41,10 +41,10 @@ class SmartHomeBotTest {
         assertThrows(InvalidAdditionOfAppliance.class, () -> applianceList.addAppliance(l1));
 
     }
-    // Just to test if the PR will succeed
     @Test
     public void removeLocationTest() throws InvalidAddtionOfLocation, EmptyParameterException {
-        //Create Sample Locations and empty appliance list
+        // Just to test if the PR will succeed
+        // Create Sample Locations and empty appliance list
         HomeLocations homeLocations = new HomeLocations();
         homeLocations.addLocation("BedRoom1");
         homeLocations.addLocation("BedRoom3");

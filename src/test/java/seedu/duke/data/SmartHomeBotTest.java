@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.data;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.RemoveCommand;
 import seedu.duke.common.Messages;
-import seedu.duke.data.ApplianceList;
-import seedu.duke.data.HomeLocations;
-import seedu.duke.data.type.Lights;
 import seedu.duke.exceptions.EmptyParameterException;
 import seedu.duke.exceptions.InvalidAdditionOfAppliance;
 import seedu.duke.exceptions.InvalidAddtionOfLocation;
@@ -40,6 +37,21 @@ class SmartHomeBotTest {
         applianceList.addAppliance(l2);
         assertThrows(InvalidAdditionOfAppliance.class, () -> applianceList.addAppliance(l1));
 
+    }
+
+    @Test
+    void getTypeTest() {
+        assertEquals("AirConditioner",new AirConditioner("aircon1", "br1", "25").getType());
+    }
+
+    @Test
+    void onOffTest() {
+        AirConditioner aircon = new AirConditioner("aircon", "br1", "200");
+        if (aircon.getStatus().equals("On")) {
+            assertEquals("aircon: On", aircon.toString());
+        } else {
+            assertEquals("aircon: Off", aircon.toString());
+        }
     }
 
     @Test

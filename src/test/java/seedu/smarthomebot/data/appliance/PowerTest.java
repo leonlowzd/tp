@@ -3,7 +3,9 @@ package seedu.smarthomebot.data.appliance;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.smarthomebot.commons.exceptions.DuplicateDataException;
+import seedu.smarthomebot.commons.exceptions.InvalidLocationException;
 import seedu.smarthomebot.data.appliance.type.Fan;
+import seedu.smarthomebot.data.location.Location;
 import seedu.smarthomebot.data.location.LocationList;
 import seedu.smarthomebot.logic.commands.exceptions.InvalidApplianceNameException;
 import seedu.smarthomebot.logic.commands.exceptions.LocationNotFoundException;
@@ -17,12 +19,15 @@ class PowerTest {
 
     private Appliance coolingFan;
     private LocationList locationList;
+    private ApplianceList applianceList;
 
     @BeforeEach
-    public void setUp() throws InvalidApplianceNameException, LocationNotFoundException, DuplicateDataException {
+    public void setUp() throws InvalidApplianceNameException,
+            LocationNotFoundException, DuplicateDataException, InvalidLocationException {
         String bedroom = "bedroom";
         locationList = new LocationList();
-        locationList.addLocation(bedroom);
+        Location location = new Location(bedroom, applianceList);
+        locationList.addLocation(location);
         coolingFan = new Fan("Speedy", bedroom, "150", locationList);
     }
 

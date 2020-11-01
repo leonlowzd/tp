@@ -2,11 +2,13 @@ package seedu.smarthomebot.storage;
 
 import seedu.smarthomebot.commons.Messages;
 import seedu.smarthomebot.commons.exceptions.DuplicateDataException;
+import seedu.smarthomebot.commons.exceptions.InvalidLocationException;
 import seedu.smarthomebot.data.appliance.ApplianceList;
 import seedu.smarthomebot.data.appliance.type.AirConditioner;
 import seedu.smarthomebot.data.appliance.type.Fan;
 import seedu.smarthomebot.data.appliance.type.Lights;
 import seedu.smarthomebot.data.appliance.type.SmartPlug;
+import seedu.smarthomebot.data.location.Location;
 import seedu.smarthomebot.data.location.LocationList;
 import seedu.smarthomebot.logic.commands.exceptions.InvalidApplianceNameException;
 import seedu.smarthomebot.logic.commands.exceptions.LocationNotFoundException;
@@ -37,7 +39,7 @@ public class ReadStorageFile extends StorageFile {
             int i = 0;
             File myFile = new File(FILE_PATH);
             Scanner myReader = new Scanner(myFile);
-            String locationList =  myReader.nextLine();
+            String locationList = myReader.nextLine();
             try {
                 readToLocationList(locationList);
                 readToApplianceList(i, myReader);
@@ -108,10 +110,11 @@ public class ReadStorageFile extends StorageFile {
             String[] stringSplit = locations.split(",");
             for (String locationName : stringSplit) {
                 if (!locationName.isEmpty()) {
-                    locationList.addLocation(locationName.trim());
+                    Location tempLocation = new Location(locationName.trim(), applianceList);
+                    locationList.addLocation(tempLocation);
                 }
             }
-        } catch (IndexOutOfBoundsException | DuplicateDataException e) {
+        } catch (IndexOutOfBoundsException | DuplicateDataException | InvalidLocationException e) {
             throw new FileCorruptedException();
         }
 

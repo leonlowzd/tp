@@ -1,6 +1,7 @@
 package seedu.smarthomebot.logic.commands;
 
 import seedu.smarthomebot.data.appliance.Appliance;
+import seedu.smarthomebot.data.location.Location;
 
 import java.util.ArrayList;
 
@@ -75,7 +76,7 @@ public class ListCommand extends Command {
             return new CommandResult(LINE + MESSAGE_LIST_NO_LOCATIONS);
         }
         String outputLocationsList = LINE + MESSAGE_LIST_LOCATIONS;
-        for (String location : locationList.getAllLocations()) {
+        for (Location location : locationList.getAllLocations()) {
             outputLocationsList = outputLocationsList.concat(System.lineSeparator() + index + ": " + location);
             index++;
         }

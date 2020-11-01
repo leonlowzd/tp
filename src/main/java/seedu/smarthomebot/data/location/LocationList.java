@@ -1,7 +1,7 @@
 package seedu.smarthomebot.data.location;
 
 import seedu.smarthomebot.commons.exceptions.DuplicateDataException;
-import seedu.smarthomebot.commons.exceptions.InvalidRemovalLocationException;
+import seedu.smarthomebot.commons.exceptions.InvalidLocationException;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class LocationList {
 
-    private static ArrayList<String> locationList;
+    private static ArrayList<Location> locationList;
 
     public LocationList() {
         this.locationList = new ArrayList<>();
@@ -21,9 +21,8 @@ public class LocationList {
      *
      * @param location used to be added into the location list.
      */
-    public void addLocation(String location) throws DuplicateDataException {
-        // create location from Appliance
-        if (!isLocationCreated(location)) {
+    public void addLocation(Location location) throws DuplicateDataException {
+        if (!isLocationCreated(location.toString())) {
             this.locationList.add(location);
         } else {
             throw new DuplicateDataException();
@@ -35,9 +34,9 @@ public class LocationList {
      *
      * @param location used to be removed from the location list.
      */
-    public void removeLocation(String location) throws InvalidRemovalLocationException {
+    public void removeLocation(String location) throws InvalidLocationException {
         if (!(isLocationCreated(location))) {
-            throw new InvalidRemovalLocationException();
+            throw new InvalidLocationException();
         } else {
             int removeIndex = getRemoveLocationIndex(location);
             this.locationList.remove(removeIndex);
@@ -52,8 +51,8 @@ public class LocationList {
      */
     public boolean isLocationCreated(String toCheckLocation) {
         boolean isValid = false;
-        for (String location : this.locationList) {
-            if (location.equals(toCheckLocation)) {
+        for (Location location : this.locationList) {
+            if (location.toString().equals(toCheckLocation)) {
                 isValid = true;
                 break;
             }
@@ -66,7 +65,7 @@ public class LocationList {
      *
      * @return list of Location in SmartHomeBot in ArrayList String.
      */
-    public ArrayList<String> getAllLocations() {
+    public ArrayList<Location> getAllLocations() {
         return this.locationList;
     }
 
@@ -77,7 +76,7 @@ public class LocationList {
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (String location : this.locationList) {
+        for (Location location : this.locationList) {
             sb.append(location);
             sb.append("\n");
         }
@@ -93,8 +92,8 @@ public class LocationList {
     private int getRemoveLocationIndex(String toRemoveLocation) {
         int removeIndex = -1;
         int locationIndex = 0;
-        for (String location : this.locationList) {
-            if (location.equals(toRemoveLocation)) {
+        for (Location location : this.locationList) {
+            if (location.toString().equals(toRemoveLocation)) {
                 removeIndex = locationIndex;
                 break;
             } else {

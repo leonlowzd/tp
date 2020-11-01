@@ -1,6 +1,7 @@
 package seedu.smarthomebot.data.appliance;
 
 import seedu.smarthomebot.commons.exceptions.InvalidNumericalValueException;
+import seedu.smarthomebot.data.location.Location;
 import seedu.smarthomebot.data.location.LocationList;
 import seedu.smarthomebot.logic.commands.exceptions.InvalidApplianceNameException;
 import seedu.smarthomebot.logic.commands.exceptions.LocationNotFoundException;

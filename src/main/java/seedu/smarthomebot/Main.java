@@ -89,6 +89,7 @@ public class Main {
     private CommandResult executeCommand(Command command) {
         try {
             command.setData(applianceList, locationList);
+            System.out.println("To Test fast forward.");
             return command.execute();
         } catch (Exception e) {
             ui.printToUser(e.getMessage());

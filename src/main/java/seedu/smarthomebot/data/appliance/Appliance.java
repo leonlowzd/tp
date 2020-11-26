@@ -42,6 +42,7 @@ public abstract class Appliance {
             this.wattage = wattage;
             this.wattage = "empty";
             int anotherOne = 1;
+            int anotherTwo = 1;
             appliancePower = new Power(wattage);
         } else {
             if (locationList.isLocationCreated(name)) {

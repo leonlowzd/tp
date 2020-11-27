@@ -50,6 +50,13 @@ public class AirConditioner extends Appliance {
         }
     }
 
+    public boolean switchOn(String temperature) {
+        super.switchOn();
+        System.out.println("temperature HGDFGDFG");
+        setTemperature(temperature);
+        return appliancePower.onAppliance();
+    }
+
 
     /**
      * Method to set the temperature of appliance from user text file.

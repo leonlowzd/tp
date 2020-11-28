@@ -158,7 +158,14 @@ public class OnCommand extends Command {
      */
     private String onAppliance(Appliance toOnAppliance, boolean isList) {
         String outputResult = "";
-        boolean onResult = toOnAppliance.switchOn();
+        boolean onResult;
+        if (toOnAppliance.getType().equals("aircon")) {
+            AirConditioner ac = (AirConditioner) toOnAppliance;
+            onResult = ac.switchOn("25");
+        } else {
+            onResult = toOnAppliance.switchOn();
+        }
+
         assert toOnAppliance.getStatus().equals("ON") : "Appliance should be already ON";
         String setParameterStatement = setParameter(parameter, toOnAppliance);
         if (isList) {

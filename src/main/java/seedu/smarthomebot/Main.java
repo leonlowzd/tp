@@ -89,8 +89,7 @@ public class Main {
     private CommandResult executeCommand(Command command) {
         try {
             command.setData(applianceList, locationList);
-            CommandResult result = command.execute();
-            return result;
+            return command.execute();
         } catch (Exception e) {
             ui.printToUser(e.getMessage());
             throw new RuntimeException(e);

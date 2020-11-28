@@ -30,6 +30,7 @@ public class ApplianceList {
     public void addAppliance(Appliance appliance) throws DuplicateDataException {
         if (!isApplianceExist(appliance.getName())) {
             applianceList.add(appliance);
+            System.out.println("test");
         } else {
             throw new DuplicateDataException();
         }
